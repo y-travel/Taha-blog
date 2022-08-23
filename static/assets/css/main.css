@@ -9,20 +9,21 @@
 @font-face {
 	
 	font-family: 'BYekan';
-	src: url('../fonts/BYekan.eot');
-	src: url('../fonts/BYekan.eot?#iefix') format('embedded-opentype'),
-	url('../fonts/BYekan.woff') format('woff'),
-	url('../fonts/BYekan.ttf') format('truetype'),
-	url('../fonts/BYekan.svg#BYekan') format('svg');
+	src: url('assets/fonts/BYekan.eot');
+	src: url('assets/fonts/BYekan.eot?#iefix') format('embedded-opentype'),
+	url('assets/fonts/BYekan.woff') format('woff'),
+	url('assets/fonts/BYekan.ttf') format('truetype'),
+	url('/fonts/BYekan.svg#BYekan') format('svg');
 	font-weight: normal;
 	font-style: normal;
 }
 
 
+
 body {
   font-family: 'BYekan';
   font-size: 10pt;
-  /* background:; */
+  background:#0083C9;
   position: relative;
   font-weight: normal;
   direction: rtl;
@@ -250,7 +251,7 @@ a#scrollUp i{
 
 .header-bottom {
   padding-bottom: 10px;
-  padding-top: 30px; 
+  padding-top: 30px;
 }
 
 .navbar-collapse.collapse{

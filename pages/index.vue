@@ -1,28 +1,44 @@
 <template>
   <div>
-    <Home />
 
-    <!-- <nuxt />
-    <nuxt-link to="fun">
-      <h2 class="red">fun</h2>
-    </nuxt-link> -->
+    <NavMenu></NavMenu>
 
-       <script src="../assets/js/jquery.js"></script>
-	<script src="../assets/js/bootstrap.min.js"></script>
-	<script src="../assets/js/jquery.scrollUp.min.js"></script>
-	<script src="../assets/js/price-range.js"></script>
-    <script src="../assets/js/jquery.prettyPhoto.js"></script>
-    <script src="../assets/js/main.js"></script>
+    <Home></Home>
+    <transition name="home"></transition>
 
+    <Footer></Footer>
 
   </div>
 </template>
 
-import Vue from 'vue'
-import Home from '~/components/Home.vue'
+<script>
+import NavMenu from '~/components/NavMenu.vue';
+import Home from '~/components/Home.vue';
+import Footer from '~/components/Footer.vue';
 
-export default Vue.extend({
-    name: "IndexPage",
-    components: { Home }
-})
+export default {
+
+  transition: {
+    name: 'home',
+    mode: 'out-in'
+  },
+
+  components: {
+    NavMenu,
+    Home,
+    Footer
+  }
+}
 </script>
+
+<style>
+.home-enter-active,
+.home-leave-active {
+  transition: all .5s;
+}
+
+.home-enter,
+.home-leave-active {
+  transform: scale(0);
+}
+</style>
