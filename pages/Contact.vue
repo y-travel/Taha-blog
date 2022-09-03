@@ -1,7 +1,7 @@
 <template>
     <div>
 
-        <NavMenu></NavMenu>
+        <HeaderMenu></HeaderMenu>
 
         <div id="contact-page" class="container">
             <div class="bg">
@@ -10,7 +10,7 @@
                         <div class="col-sm-12" style="overflow: hidden; margin-bottom: 40px">
                             <h2 class="title text-center">تمـاس با مـا</h2>
                             <iframe
-                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1621.3545298246322!2d51.42870430051277!3d35.634898294459774!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xb2ae6a34cc5b5472!2zMzXCsDM4JzA1LjYiTiA1McKwMjUnNDUuNyJF!5e0!3m2!1sen!2s!4v1661261448517!5m2!1sen!2s"
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3242.7105183478798!2d51.42709331460366!3d35.63486234012232!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xb38c39639e42638b!2zMzXCsDM4JzA1LjUiTiA1McKwMjUnNDUuNCJF!5e0!3m2!1sen!2sus!4v1661496872852!5m2!1sen!2sus"
                                 width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"
                                 referrerpolicy="no-referrer-when-downgrade">
                             </iframe>
@@ -70,8 +70,9 @@
 </template>
 
 <script>
-import NavMenu from '~/components/NavMenu.vue';
 import Footer from '~/components/Footer.vue';
+import HeaderMenu from '~/components/HeaderMenu.vue';
+
 export default {
     transition: {
     name: 'home',
@@ -79,8 +80,8 @@ export default {
   },
     name: "Contact",
     components: {
-        NavMenu,
-        Footer
-    }
+    Footer,
+    HeaderMenu
+}
 }
 </script>

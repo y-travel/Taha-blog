@@ -6,7 +6,7 @@ export default {
   head: {
     title: 'طاها',
     htmlAttrs: {
-      lang: 'en',
+      lang: 'fa',
     },
     meta: [
       { charset: 'utf-8' },
@@ -15,28 +15,14 @@ export default {
       { name: 'format-detection', content: 'telephone=no' },
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
       { rel: "stylesheet", href: "/assets/css/bootstrap.min.css" },
       { rel: "stylesheet", href: "/assets/css/font-awesome.min.css" },
-      { rel: "stylesheet", href: "/assets/css/prettyPhoto.css" },
-      { rel: "stylesheet", href: "/assets/css/price-range.css" },
-      { rel: "stylesheet", href: "/assets/css/animate.css" },
       { rel: "stylesheet", href: "/assets/css/main.css" },
-      { rel: "stylesheet", href: "/assets/css/responsive.css" },
-      { rel: "icon", href: "/assets/images/ico/favicon.ico" },
-      { rel: "apple-touch-icon-precomposed", href: "/assets/images/ico/apple-touch-icon-144-precomposed.png" },
-      { rel: "apple-touch-icon-precomposed", href: "/assets/images/ico/apple-touch-icon-114-precomposed.png" },
-      { rel: "apple-touch-icon-precomposed", href: "/assets/images/ico/apple-touch-icon-72-precomposed.png" },
-      { rel: "apple-touch-icon-precomposed", href: "/assets/images/ico/apple-touch-icon-57-precomposed.png" },
 
     ],
     script: [
       { src: "/assets/js/jquery.js" },
       { src: "/assets/js/bootstrap.min.js" },
-      { src: "/assets/js/jquery.scrollUp.min.js" },
-      { src: "/assets/js/price-range.js" },
-      { src: "/assets/js/jquery.prettyPhoto.js" },
-      { src: "/assets/js/main.js" },
     ],
   },
 

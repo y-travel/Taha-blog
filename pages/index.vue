@@ -1,9 +1,10 @@
 <template>
   <div>
 
-    <NavMenu></NavMenu>
+    <HeaderMenu></HeaderMenu>
 
     <Home></Home>
+
     <transition name="home"></transition>
 
     <Footer></Footer>
@@ -12,7 +13,7 @@
 </template>
 
 <script>
-import NavMenu from '~/components/NavMenu.vue';
+import HeaderMenu from '~/components/HeaderMenu.vue';
 import Home from '~/components/Home.vue';
 import Footer from '~/components/Footer.vue';
 
@@ -24,10 +25,10 @@ export default {
   },
 
   components: {
-    NavMenu,
+    Footer,
+    HeaderMenu,
     Home,
-    Footer
-  }
+}
 }
 </script>
 
