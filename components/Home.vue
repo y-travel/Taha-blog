@@ -1,9 +1,5 @@
 <template>
   <div>
-
-    <!-- <nuxt-link to="/">
-			<button style="font-size:12pt" type="button" class="btn btn-info">بازگشت</button>
-		</nuxt-link> -->
     <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
   <ol class="carousel-indicators">
     <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>

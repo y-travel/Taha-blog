@@ -48,7 +48,46 @@ export default {
     'bootstrap-vue/nuxt',
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
+    // *** i18n ***
+    '@nuxtjs/i18n',
   ],
+  i18n: {
+    strategy: 'prefix',
+
+    defaultLocale: 'fa',
+
+    locales: [
+      {
+        code: 'en',
+        name: 'English'
+      },
+      {
+        code: 'fa',
+        name: 'پارسی',
+      }
+    ],
+
+    //======= @todo
+    vueI18n: {
+      fallbackLocale: 'fa',
+      messages: {
+        en: {
+          welcome: 'Welcome',
+          home: 'Home',
+          about: 'About',
+          contact: 'Contact',
+          search: 'Search',
+        },
+        fa: {
+          welcome: 'خوش آمدید',
+          home: 'خانه',
+          about: 'درباره ما',
+          contact: 'تماس با ما',
+          search: 'جستجو',
+        },
+      }
+    }
+  },
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
