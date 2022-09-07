@@ -1,11 +1,15 @@
 <template>
   <div>
 
+    <transition name="home"></transition>
+
     <HeaderMenu></HeaderMenu>
 
     <Home></Home>
 
-    <transition name="home"></transition>
+    <Hotels></Hotels>
+    
+    <Packages></Packages>
 
     <Footer></Footer>
 
@@ -16,6 +20,8 @@
 import HeaderMenu from '~/components/HeaderMenu.vue';
 import Home from '~/components/Home.vue';
 import Footer from '~/components/Footer.vue';
+import Hotels from '~/components/Hotels.vue';
+import Packages from '~/components/Packages.vue';
 
 export default {
 
@@ -28,6 +34,8 @@ export default {
     Footer,
     HeaderMenu,
     Home,
+    Hotels,
+    Packages
 }
 }
 </script>
@@ -35,7 +43,7 @@ export default {
 <style>
 .home-enter-active,
 .home-leave-active {
-  transition: all .5s;
+  transition: all .7s;
 }
 
 .home-enter,

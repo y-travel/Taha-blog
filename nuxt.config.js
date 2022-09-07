@@ -74,9 +74,11 @@ export default {
         en: {
           welcome: 'Welcome',
           home: 'Home',
-          about: 'About',
-          contact: 'Contact',
+          about: 'About Us',
+          contact: 'Contact US',
           search: 'Search',
+          hotels: 'Hotels',
+          pakages: 'Pakages',
         },
         fa: {
           welcome: 'خوش آمدید',
@@ -84,6 +86,8 @@ export default {
           about: 'درباره ما',
           contact: 'تماس با ما',
           search: 'جستجو',
+          hotels: 'هتل ها',
+          pakages: 'پکیج ها',
         },
       }
     }

@@ -1,6 +1,12 @@
+
 html{
   direction:rtl;
 } 
+
+.ltrdir
+{
+  direction:ltr !important;
+}
 
 /*======= Nav Bar =======*/
 .navbar-nav
@@ -13,29 +19,67 @@ html{
   font-weight: bold !important;
   font-size: 16px !important;
 }
+/* ======= Content ======= */
+h2.title {
+  color: #FE980F;
+  font-size: 16pt;
+  font-weight: 400;
+  margin: 0 15px;
+  padding-top: 50px;
+  margin-bottom: 30px;
+  position: relative;
+}
+
+/* Packages Item */
+.product-image-wrapper{
+	border:1px solid #F7F7F5;
+	overflow: hidden;
+	margin-bottom:30px;
+  position: relative;
+}
+
+.productinfo h2{
+	color: #FE980F;
+	font-size: 24px;
+	font-weight: 70;
+}
+
+.productinfo p{
+  font-size: 10pt;
+  font-weight: 40;
+  color: #696763;
+}
+
+/* .productinfo img{
+  width: 100%;
+} */
+
+.about .about-desc {
+	text-align: justify;
+	font-size: 16pt;
+}
+
+.about-address p {
+	text-align: center;
+	padding: 20px 10px 20px 10px;
+	background-color: #FD9A16;
+	font-family: tahoma;
+	font-size: 10pt;
+	color: #ffffff;
+	border-radius: 0.2em;
+}
+
 
 /*======= Footer =======*/
 .footer
 {
   text-align:right;
 }
+
 .footer-bottom {
   background: #D6D6D0;
   padding-top: 10px;
   direction: ltr !important;
-}
-
-.footer-bottom p {
-  color: #363432;
-  font-family: 'BYekan', sans-serif;
-  font-weight: 300;
-  margin-left: 15px;
-}
-
-.footer-bottom p span a {
-  color: #FE980F;
-  font-style: italic;
-  text-decoration: underline;
 }
 
 .companyinfo

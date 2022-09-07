@@ -156,7 +156,7 @@
                     <div class="col-sm-12 about-address">
                         <address>
                             <p>
-                                توضیحات...
+                                آدرس...
                             </p>
                         </address>
                     </div>

@@ -12,7 +12,7 @@
 						<div class="companyinfo">
 							<h4>
 								<b>
-									درباره ما :
+									{{ $t('about') }}
 								</b>
 							</h4>
 							<p>

@@ -10,7 +10,7 @@
 				<span class="navbar-toggler-icon"></span>
 			</button>
 			<div class="collapse navbar-collapse" id="navbarNav">
-				<ul class="navbar-nav">
+				<ul class="navbar-nav" v-bind:class="{'ltrdir':($i18n.locale === 'en')}">
 					<li class="nav-item">
 						<nuxt-link class="navbar-brand" to="/" active-class="active" exact>
 							{{ $t('home') }}
@@ -38,8 +38,6 @@
 				<nuxt-link v-for="locale in availableLocales" :key="locale.code" :to="switchLocalePath(locale.code)">
 					{{ locale.name }}
 				</nuxt-link>
-
-				<p style="font-size:larger">{{ $t('welcome') }}</p>
 
 			</div>
 		</nav>
