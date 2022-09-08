@@ -1,18 +1,18 @@
 <template>
-	<div class="footer">
+	<div class="footer" :class="{ 'ltrdir': ($i18n.locale === 'en') }">
 		<div>
 			<div class="container">
 				<div class="row">
 					<div class="col-sm-3">
 						<div class="address">
-							<img src="/assets/images/home/map.png" alt="" />
+							<img src="/assets/images/home/map.png" alt="map" />
 						</div>
 					</div>
 					<div class="col-sm-6">
 						<div class="companyinfo">
 							<h4>
 								<b>
-									{{ $t('about') }}
+									&nbsp; {{ $t('about') }}
 								</b>
 							</h4>
 							<p>
@@ -52,5 +52,10 @@
 <script>
 export default {
 	name: "Footer",
+	computed: {
+		availableLocales() {
+			return this.$i18n.locales.filter(i => i.code !== this.$i18n.locale)
+		}
+	}
 }
 </script>

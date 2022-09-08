@@ -1,16 +1,20 @@
 <template>
-	<div>
+	<div :class="{ 'ltrdir': ($i18n.locale === 'en') }">
 		<!-- <h1>Header</h1> -->
-		<nav class="navbar navbar-expand-lg navbar-light bg-light">
-			<nuxt-link class="navbar-brand" to="/">
-				طاها
-			</nuxt-link>
+		<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
 				aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
 			</button>
+
 			<div class="collapse navbar-collapse" id="navbarNav">
-				<ul class="navbar-nav" v-bind:class="{'ltrdir':($i18n.locale === 'en')}">
+				<ul class="navbar-nav">
+
+					<!-- <nuxt-link class="navbar-brand" to="/">
+						طاها
+					</nuxt-link> -->
+
 					<li class="nav-item">
 						<nuxt-link class="navbar-brand" to="/" active-class="active" exact>
 							{{ $t('home') }}
@@ -21,7 +25,7 @@
 							{{ $t('about') }}
 						</nuxt-link>
 					</li>
-					<li class="nav-item"> 
+					<li class="nav-item">
 						<nuxt-link class="navbar-brand" to="/Contact" active-class="active">
 							{{ $t('contact') }}
 						</nuxt-link>
@@ -31,14 +35,14 @@
 						&nbsp;<button class="btn btn-outline-success my-2 my-sm-0" type="submit">{{ $t('search')
 						}}</button>
 					</form>
+					&nbsp;&nbsp;
+					<div style="font-size:large; padding-top: 10px;">
+						<nuxt-link v-for="locale in availableLocales" :key="locale.code"
+							:to="switchLocalePath(locale.code)">
+							{{ locale.name }}
+						</nuxt-link>
+					</div>
 				</ul>
-			</div>
-			<div style="font-size:large">
-
-				<nuxt-link v-for="locale in availableLocales" :key="locale.code" :to="switchLocalePath(locale.code)">
-					{{ locale.name }}
-				</nuxt-link>
-
 			</div>
 		</nav>
 	</div>

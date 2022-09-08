@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div :class="{ 'ltrdir headerltr': ($i18n.locale === 'en') }">
 
         <HeaderMenu></HeaderMenu>
 
@@ -16,7 +16,7 @@
                     <div class="col-sm-8">
                         <div class="about">
                             <div class="contact-info">
-                            <h2 class="title text-center">تورینه</h2>
+                            <h2 class="title text-center"> {{ $t('title') }} </h2>
                         </div>
                             <p class="about-desc">
                                 &nbsp; &nbsp;تورینه می کوشد تا
@@ -163,24 +163,20 @@
                 </div>
             </div>
         </div>
-        <!--/#contact-page-->
-
 
         <div class="footer-bottom">
 			<div class="container">
 				<div class="row">
 					<p>Copyright © 2022 
-						<a target="_blank" href="http://www.tourine.ir/"><b>طاها</b></a>. All rights reserved.
+						<a target="_blank" href="http://www.tourine.ir/"><b> {{ $t('title') }} </b></a>. All rights reserved.
 					</p>
 				</div>
 			</div>
 		</div>
-
     </div>
 </template>
 
 <script>
-import Footer from '~/components/Footer.vue';
 import HeaderMenu from '~/components/HeaderMenu.vue';
 export default {
     transition: {
@@ -189,8 +185,12 @@ export default {
   },
     name: "About",
     components: {
-    Footer,
     HeaderMenu
-}
+},
+computed: {
+		availableLocales() {
+			return this.$i18n.locales.filter(i => i.code !== this.$i18n.locale)
+		}
+	}
 }
 </script>

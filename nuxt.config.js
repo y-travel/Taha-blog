@@ -51,16 +51,23 @@ export default {
     // *** i18n ***
     '@nuxtjs/i18n',
   ],
+  
+
+  // Axios module configuration: https://go.nuxtjs.dev/config-axios
+  axios: {
+    // Workaround to avoid enforcing hard-coded localhost:3000: https://github.com/nuxt-community/axios-module/issues/308
+    baseURL: '/',
+  },
+
+  // Build Configuration: https://go.nuxtjs.dev/config-build
+  build: {},
+
   i18n: {
     strategy: 'prefix',
 
     defaultLocale: 'fa',
 
     locales: [
-      {
-        code: 'en',
-        name: 'English'
-      },
       {
         code: 'fa',
         name: 'پارسی',
@@ -71,34 +78,23 @@ export default {
     vueI18n: {
       fallbackLocale: 'fa',
       messages: {
-        en: {
-          welcome: 'Welcome',
-          home: 'Home',
-          about: 'About Us',
-          contact: 'Contact US',
-          search: 'Search',
-          hotels: 'Hotels',
-          pakages: 'Pakages',
-        },
         fa: {
-          welcome: 'خوش آمدید',
+          title: 'تورینه',
           home: 'خانه',
           about: 'درباره ما',
           contact: 'تماس با ما',
           search: 'جستجو',
           hotels: 'هتل ها',
           pakages: 'پکیج ها',
+          contactinfo: 'اطلاعات تماس',
+          be_in_touch_with_us: 'با ما در ارتباط باشید',
+          send:'ارسال',
+          name:'نام',
+          email:'ایمیل',
+          subject:'موضوع',
+          your_message:'پیغام شما',
         },
       }
     }
   },
-
-  // Axios module configuration: https://go.nuxtjs.dev/config-axios
-  axios: {
-    // Workaround to avoid enforcing hard-coded localhost:3000: https://github.com/nuxt-community/axios-module/issues/308
-    baseURL: '/',
-  },
-
-  // Build Configuration: https://go.nuxtjs.dev/config-build
-  build: {},
 }

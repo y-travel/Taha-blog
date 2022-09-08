@@ -1,11 +1,13 @@
 
 html{
   direction:rtl;
+  padding-top: 60px;
 } 
 
 .ltrdir
 {
   direction:ltr !important;
+  text-align: left !important;
 }
 
 /*======= Nav Bar =======*/
@@ -29,7 +31,11 @@ h2.title {
   margin-bottom: 30px;
   position: relative;
 }
-
+.contact-info
+{
+  direction: rtl;
+  text-align: right;
+}
 /* Packages Item */
 .product-image-wrapper{
 	border:1px solid #F7F7F5;
