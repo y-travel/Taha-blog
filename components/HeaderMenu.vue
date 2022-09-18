@@ -36,12 +36,14 @@
 						}}</button>
 					</form>
 					&nbsp;&nbsp;
-					<div style="font-size:large; padding-top: 10px;">
+					
+					<!-- Language Selector -->
+					<!-- <div style="font-size:large; padding-top: 10px;">
 						<nuxt-link v-for="locale in availableLocales" :key="locale.code"
 							:to="switchLocalePath(locale.code)">
 							{{ locale.name }}
 						</nuxt-link>
-					</div>
+					</div> -->
 				</ul>
 			</div>
 		</nav>

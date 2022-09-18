@@ -1,5 +1,7 @@
 <template>
   <div>
+
+    <!-- <b-overlay :show="homeLoading" no-wrap></b-overlay> -->
     <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
       <ol class="carousel-indicators">
         <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -30,12 +32,46 @@
       </a>
     </div>
 
+    <div>
+      <b-card no-body>
+        <b-tabs content-class="mt-3" align="center" lazy>
+          <b-tab :title="$t('pakages')" active>
+            <b-card-text>
+              <Packages></Packages>
+            </b-card-text>
+          </b-tab>
+          <b-tab :title="$t('hotels')">
+            <b-card-text>
+              <Hotels></Hotels>
+            </b-card-text>
+          </b-tab>
+        </b-tabs>
+      </b-card>
+    </div>
+
   </div>
 </template>
 
-<script>
-export default {
-  name: "Home",
-  components: {}
-}
+<script lang="ts">
+import { defineComponent, onMounted, onUpdated, ref } from 'vue'
+
+export default defineComponent({
+    name: "Home",
+    setup() {
+        const homeLoading = ref();
+        const init = async () => {
+            // homeLoading.value = "true";
+        };
+        onMounted(async () => {
+            await init();
+        });
+        onUpdated(async () => {
+            // homeLoading.value = false;
+        });
+        return {
+            homeLoading,
+        };
+    },
+    components: {  }
+})
 </script>

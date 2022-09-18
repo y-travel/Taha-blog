@@ -50,7 +50,12 @@ export default {
     '@nuxtjs/axios',
     // *** i18n ***
     '@nuxtjs/i18n',
+    '@nuxt/http',
   ],
+
+  http: {
+    // proxyHeaders: false
+  },
   
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
@@ -65,9 +70,14 @@ export default {
   i18n: {
     strategy: 'prefix',
 
+    fallbackLocale: 'fa',
     defaultLocale: 'fa',
 
     locales: [
+      {
+        code: 'en',
+        name: 'EN',
+      },
       {
         code: 'fa',
         name: 'پارسی',
@@ -76,7 +86,7 @@ export default {
 
     //======= @todo
     vueI18n: {
-      fallbackLocale: 'fa',
+
       messages: {
         fa: {
           title: 'تورینه',
@@ -93,6 +103,7 @@ export default {
           email:'ایمیل',
           subject:'موضوع',
           your_message:'پیغام شما',
+          more:'بیشتر',
         },
       }
     }

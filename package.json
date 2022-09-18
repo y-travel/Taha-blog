@@ -13,6 +13,7 @@
     "lintfix": "prettier --write --list-different . && yarn lint:js --fix"
   },
   "dependencies": {
+    "@nuxt/http": "^0.6.4",
     "@nuxtjs/axios": "^5.13.6",
     "@nuxtjs/i18n": "^7.3.0",
     "babel-loader": "^8.2.5",
