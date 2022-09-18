@@ -55,8 +55,12 @@ export default {
 
   http: {
     // proxyHeaders: false
+    Proxy: true
   },
-  
+  Proxy: {
+    '/api': 'http://stage.tourine.ir'
+  },
+
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
@@ -98,12 +102,12 @@ export default {
           pakages: 'پکیج ها',
           contactinfo: 'اطلاعات تماس',
           be_in_touch_with_us: 'با ما در ارتباط باشید',
-          send:'ارسال',
-          name:'نام',
-          email:'ایمیل',
-          subject:'موضوع',
-          your_message:'پیغام شما',
-          more:'بیشتر',
+          send: 'ارسال',
+          name: 'نام',
+          email: 'ایمیل',
+          subject: 'موضوع',
+          your_message: 'پیغام شما',
+          more: 'بیشتر',
         },
       }
     }

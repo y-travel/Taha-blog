@@ -83,8 +83,8 @@ export default defineComponent({
         const init = async () => {
             loading2.value = true;
             try {
-
-                pkgCount.value = (await getRequest('http://stage.tourine.ir/api/packages')).data.length;
+                
+                pkgCount.value = (await getRequest('http://stage.tourine.ir/api/packages'))?.data.length;
                 console.log("pkgCount: " + pkgCount.value);
 
                 pkgPages.value = Math.ceil(pkgCount.value / 4);

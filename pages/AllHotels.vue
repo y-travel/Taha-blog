@@ -3,7 +3,7 @@
 
         <HeaderMenu></HeaderMenu>
 
-        <AllPackage></AllPackage>
+        <AHotels></AHotels>
 
         <Footer></Footer>
 
@@ -15,10 +15,10 @@
 import { defineComponent, onMounted, onUpdated, ref } from 'vue'
 import Footer from '~/components/Footer.vue';
 import HeaderMenu from '~/components/HeaderMenu.vue';
-import AllPackage from '~/components/AllPackage.vue';
+import AHotels from '../components/aHotels.vue';
 
 export default defineComponent({
-    name: "AllPackages",
+    name: "AllHotels",
     setup() {
         const homeLoading = ref();
         const init = async () => {
@@ -34,6 +34,6 @@ export default defineComponent({
             homeLoading,
         };
     },
-    components: { Footer, HeaderMenu, AllPackage }
+    components: { Footer, HeaderMenu, AHotels }
 })
 </script>
