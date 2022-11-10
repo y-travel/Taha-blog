@@ -1,12 +1,22 @@
+const environments = require('./.env.json');
+const locales1 = require('./locales');
+const far = require('./locales/fa');
+
 export default {
+
+  env: environments,
+
   // Target: https://go.nuxtjs.dev/config-target
   target: 'static',
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
     title: 'طاها',
+
     htmlAttrs: {
       lang: 'fa',
+      dir: 'rtl',
+      FontFace: 'yekan',
     },
     meta: [
       { charset: 'utf-8' },
@@ -16,9 +26,7 @@ export default {
     ],
     link: [
       { rel: "stylesheet", href: "/assets/css/bootstrap.min.css" },
-      { rel: "stylesheet", href: "/assets/css/font-awesome.min.css" },
       { rel: "stylesheet", href: "/assets/css/main.css" },
-
     ],
     script: [
       { src: "/assets/js/jquery.js" },
@@ -51,6 +59,7 @@ export default {
     // *** i18n ***
     '@nuxtjs/i18n',
     '@nuxt/http',
+
   ],
 
   http: {
@@ -58,14 +67,15 @@ export default {
     Proxy: true
   },
   Proxy: {
-    '/api': 'http://stage.tourine.ir'
+    '/api': environments.proxyUrl,
+    '/uploads': environments.uploadUrl
   },
 
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
     // Workaround to avoid enforcing hard-coded localhost:3000: https://github.com/nuxt-community/axios-module/issues/308
-    baseURL: '/',
+    // baseURL: '/',
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
@@ -92,23 +102,7 @@ export default {
     vueI18n: {
 
       messages: {
-        fa: {
-          title: 'تورینه',
-          home: 'خانه',
-          about: 'درباره ما',
-          contact: 'تماس با ما',
-          search: 'جستجو',
-          hotels: 'هتل ها',
-          pakages: 'پکیج ها',
-          contactinfo: 'اطلاعات تماس',
-          be_in_touch_with_us: 'با ما در ارتباط باشید',
-          send: 'ارسال',
-          name: 'نام',
-          email: 'ایمیل',
-          subject: 'موضوع',
-          your_message: 'پیغام شما',
-          more: 'بیشتر',
-        },
+        fa: far,
       }
     }
   },
