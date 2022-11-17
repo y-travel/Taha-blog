@@ -100,7 +100,6 @@ export default {
 
     //======= @todo
     vueI18n: {
-
       messages: {
         fa: far,
       }

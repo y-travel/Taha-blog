@@ -10,14 +10,11 @@
 						</nuxt-link>
 					</b-nav-item>
 
-					<!-- Navbar dropdowns -->
-					<b-nav-item-dropdown :text="$t('tour')" right>
-						<b-dropdown-item class="rtldir" v-for="tour in tours" :key="tour.id">
-							<nuxt-link :to="`/tour?id=${tour.id}`" active-class="active">
-								{{ tour.title }}
-							</nuxt-link>
-						</b-dropdown-item>
-					</b-nav-item-dropdown>
+					<b-nav-item>
+						<nuxt-link class="navbar-brand" to="/AllTours" active-class="active" exact>
+							{{ $t('tour') }}
+						</nuxt-link>
+					</b-nav-item>
 
 					<b-nav-item>
 						<nuxt-link class="navbar-brand" to="/AllPackages" active-class="active">
@@ -62,34 +59,33 @@ import { getRequest } from '~/utils'
 import { defineComponent, onMounted, onUpdated, ref } from 'vue'
 
 export default defineComponent({
-  name: "HeaderMenu",
+	name: "HeaderMenu",
 
-  setup() {
-    const tours = ref()
+	setup() {
+		const tours = ref()
 
-    const init = async () => {
-      try {
-        tours.value = (await getRequest('/api/tour-pages'))?.data
+		const init = async () => {
+			try {
 
-        // debugger;
+				// debugger;
 
-      } catch (err: any) {
-        console.log('result: ' + err.status.value)
-        // if(err.status.value == 200)
-      }
-    };
-    onMounted(async () => {
-      await init();
-    });
-    onUpdated(async () => {
-    });
-    return {
-      tours,
-      availableLocales() {
-        return ['fa'] //@TODO implement
-        // return globalThis.nuxt.$i18n.locales.filter(i => i.code !== this.$i18n.locale)
-      },
-    };
-  },
+			} catch (err: any) {
+				console.log('result: ' + err.status.value)
+				// if(err.status.value == 200)
+			}
+		};
+		onMounted(async () => {
+			await init();
+		});
+		onUpdated(async () => {
+		});
+		return {
+			tours,
+			availableLocales() {
+				return ['fa'] //@TODO implement
+				// return globalThis.nuxt.$i18n.locales.filter(i => i.code !== this.$i18n.locale)
+			},
+		};
+	},
 })
 </script>

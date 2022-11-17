@@ -29,7 +29,7 @@
                 <img src="/assets/svg/bars.svg" width="10" /> {{ $t('detail') }}
               </nuxt-link>
               &nbsp;&nbsp;
-              <a href="#" class="btn btn-default add-to-cart">
+              <a :href="`/app/reservations?packageId=${pkg.id}`" class="btn btn-default add-to-cart">
                 <img src="/assets/svg/dollar.svg" width="7" /> {{ $t('reserve') }}
               </a>
             </div>
@@ -55,16 +55,16 @@
         <div class="d-flex justify-content-center">
           <ul class="pagination text-center">
             <li class="page-item">
-              <a class="page-link" @click="changeP(pageNo - 1)" aria-label="Previous">
+              <a class="page-link" @click="() => changeP(pageNo - 1)" aria-label="Previous">
                 <span aria-hidden="true">&laquo;</span>
                 <span class="sr-only">Previous</span>
               </a>
             </li>
             <li class="page-item" v-for="n in pkgPages" :key="n" v-on:click="changeP(n)">
-              <a class="page-link" @click="changeP(n)">{{ n }}</a>
+              <a class="page-link" @click="() => changeP(n)">{{ n }}</a>
             </li>
             <li class="page-item">
-              <a class="page-link" @click="changeP(pageNo + 1)" aria-label="Next">
+              <a class="page-link" @click="() => changeP(pageNo + 1)" aria-label="Next">
                 <span aria-hidden="true">&raquo;</span>
                 <span class="sr-only">Next</span>
               </a>
@@ -77,52 +77,62 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, onMounted, ref } from 'vue'
-import { getRequest } from '~/utils'
+import { defineComponent, onMounted, ref } from 'vue';
+import { getRequest } from '~/utils';
 
 export default defineComponent({
   name: 'Packages',
 
   setup() {
-    const pkgs = ref({} as any)
-    const pageNo = ref('1')
-    const loading2 = ref()
-    const pkgCount = ref()
-    const pkgPages = ref()
-    const pagesInfo = ref()
-
-    const init = async () => {
-      loading2.value = true
+    const pkgs = ref({} as any);
+    const pageNo = ref(1);
+    const loading2 = ref();
+    const pkgCount = ref();
+    const pkgPages = ref();
+    const pagesInfo = ref();
+    const changeP = async (PageNo: number) => {
       try {
-        pkgCount.value = (
-          await getRequest('/api/packages')
-        )?.data.length
-        console.log('pkgCount: ' + pkgCount.value)
 
-        pkgPages.value = Math.ceil(pkgCount.value / 4)
-        console.log('pkgPages: ' + pkgPages.value)
+        loading2.value = true;
 
-        pkgs.value = (
-          await getRequest(
-            '/api/packages?pagination[page]=1&pagination[pageSize]=4&populate=departure,return'
-          )
-        )?.data
-        debugger;
+        if (PageNo > pkgPages.value) {
+          PageNo = pkgPages.value;
+        }
+        if (PageNo < 1) {
+          PageNo = 1;
+        }
+        const tmpRef = await getRequest(
+          `/api/packages?pagination[page]=${PageNo}&pagination[pageSize]=4&populate=departure,return&filters[isActive]=true`
+        );
 
+        pkgs.value = tmpRef.data;
+        pkgCount.value = tmpRef.meta.pagination.total;
+        pkgPages.value = tmpRef.meta.pagination.pageSize;
+
+        // debugger;
         // console.log("result: " + pkgs.data.status.value);
 
-        pagesInfo.value =
-          (pageNo.value as string) + '/' + (pkgPages.value as string)
-      } catch (err: any) {
-        console.log('result: ' + err.status.value)
-        // if(err.status.value == 200)
+        pagesInfo.value = pageNo.value + '/' + (pkgPages.value as string);
+
+        pageNo.value = PageNo;
+        pagesInfo.value = pageNo.value + '/' + (pkgPages.value as string);
+        console.log(pageNo.value);
+
+        loading2.value = false;
+      }
+      catch (err: any) {
+        console.log('result: ' + err.status.value);
+        // if(err.status.value == 200);
       }
     }
 
-    onMounted(async () => {
-      await init()
+    const init = async () => {
+      await changeP(1);
+    }
 
-      loading2.value = false
+    onMounted(async () => {
+      await init();
+      // debugger;
     })
 
     return {
@@ -131,34 +141,7 @@ export default defineComponent({
       pkgPages,
       loading2,
       pagesInfo,
-
-      async changeP(PageNo: string) {
-        loading2.value = true
-
-        if (PageNo > pkgPages.value) {
-          PageNo = pkgPages.value
-        }
-        if (PageNo < '1') {
-          PageNo = '1'
-        }
-
-        pkgs.value = (
-          await getRequest(
-            '/api/packages?pagination[page]=' + PageNo + '&pagination[pageSize]=4&populate=departure,return'
-          )
-        ).data
-
-        loading2.value = false
-        // console.log((pkgs.value as any).length)
-        pageNo.value = PageNo
-        pagesInfo.value =
-          (pageNo.value as string) + '/' + (pkgPages.value as string)
-        console.log(pageNo.value)
-      },
-      availableLocales() {
-        return ['fa'] //@TODO implement
-        // return globalThis.nuxt.$i18n.locales.filter(i => i.code !== this.$i18n.locale)
-      },
+      changeP,
     }
   },
 })

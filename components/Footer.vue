@@ -16,7 +16,7 @@
 								</b>
 							</h4>
 							<p>
-								&nbsp; &nbsp;تورینه می کوشد تا
+								&nbsp; &nbsp;{{ $t('title') }} می کوشد تا
 								بهترین خدمات رزرو هتل، بلیط هواپیما، بلیط چارتر و تور مسافرتی را در سراسر جهان با
 								بالاترین
 								استاندارد ها، به مشتریان خود ارائه دهد. خرید بلیط هواپیمای تور خارجی، خرید بلیط
@@ -41,7 +41,7 @@
 			<div class="container">
 				<div class="row">
 					<p>Copyright © 2022
-						<a target="_blank" href="http://www.tourine.ir/"><b>طاها</b></a>. All rights reserved.
+						<a target="_blank" href="http://www.tourine.ir/"><b>{{ $t('title') }}</b></a>. All rights reserved.
 					</p>
 				</div>
 			</div>

@@ -49,7 +49,7 @@
                         <div class="contact-info"  :class="{ 'ltrdir': ($i18n.locale === 'en') }">
                             <h2 class="title text-center"> {{ $t('contactinfo') }} </h2>
                             <address>
-                                <p>گـروه طاها</p>
+                                <p>گـروه {{$t('title')}}</p>
                                 <p>ایـران - تهران</p>
                                 <p>بزرگراه بعثت</p>
                                 <p>تلفن تماس : 00 00 18 55 021</p>

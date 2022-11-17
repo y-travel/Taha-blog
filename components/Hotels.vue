@@ -30,7 +30,6 @@
                             <img src="/assets/images/home/karbala-logo.png" style="padding: 5px;height: 50px;"
                                 class="img-responsive" alt="img" />
                         </div>
-                        <!-- d-flex justify-content-center -->
                     </div>
                 </b-card-text>
             </b-card>
@@ -113,17 +112,13 @@ export default defineComponent({
             }
             catch (err: any) {
                 console.log("result: " + err.status.value);
-                // if(err.status.value == 200)
             }
 
         };
 
         onMounted(async () => {
-
             await init();
-
             htlloading2.value = false;
-
         })
 
         return {
