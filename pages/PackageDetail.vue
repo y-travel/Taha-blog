@@ -32,37 +32,28 @@
               </span>
 
               <span title="رفت">
-                <img src="/assets/svg/plane.svg" width="15" v-if="pkg.departure?.name=='هوایی'" />
+                <img src="/assets/svg/plane.svg" width="15" v-if="pkg.departure?.name == 'هوایی'" />
                 <img src="/assets/svg/bus.svg" width="15" v-else />
                 {{ pkg.departure?.name }}&nbsp;&nbsp;&nbsp;
               </span>
               <span title="برگشت">
-                
-                <img src="/assets/svg/plane.svg" width="15" v-if="pkg.return?.name=='هوایی'" />
+
+                <img src="/assets/svg/plane.svg" width="15" v-if="pkg.return?.name == 'هوایی'" />
                 <img src="/assets/svg/bus.svg" width="15" v-else />
                 {{ pkg.return?.name }}
-                
+
                 <br />
               </span>
 
-
-              <!-- کد تور: {{ pkg?.id }}<br /> -->
             </div>
           </div>
           <br />
 
           <span class="desc" v-for="(htl, index) in pkg.hotelPlan" :key="htl.id">
+            <img src="/assets/svg/hotel.svg" width="15" />
             {{ $t('hotel') }} {{ htl.hotel.name }} ({{ htlDue[index] }} {{ $t('night') }})
-            <br/>
-            <!-- {{pkg.hotelPlan[0].hotel.name}}  -->
+            <br />
           </span>
-          <!-- <span class="large" title="نجف">
-                {{ pkg.hotelPlan[0].hotel.name }} ({{dateDiff1(pkg.hotelPlan[0].dateFrom,pkg.hotelPlan[0].dateTo) }} {{ $t('night') }})
-              </span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -->
-
-          <!-- <span class="large" title="کربلا">
-                {{ pkg.hotelPlan[1].hotel.name }} ({{dateDiff1(pkg.hotelPlan[1].dateFrom,pkg.hotelPlan[1].dateTo) }} {{ $t('night') }})
-              </span> -->
         </div>
       </div>
 
@@ -70,7 +61,10 @@
         <div class="col-sm-12">
           <hr />
           <p class="desc">
-            <b>قوانین و مقررات تور</b><br /><br />
+            <b>قوانین و مقررات پکیج</b><br/>
+            {{pkg.description}}
+            <br/><br/>
+            <b>قوانین و مقررات تور</b><br/>
             ۱- وب‌سایت تورینه طبق قوانین جمهوری اسلامی ایران، قوانین جرایم
             اینترنتی و مجموعه‌ی قوانین و مقررات تجارت الکترونیکی فعالیت
             می‌کند.<br />
@@ -92,7 +86,7 @@
   
 <script lang="ts">
 import { defineComponent, onMounted, ref } from 'vue'
-import { getRequest, dateDiff } from '~/utils'
+import { getRequest, dateDiff, getMonthName } from '~/utils'
 
 export default defineComponent({
   name: 'PackageDetail',
@@ -122,22 +116,21 @@ export default defineComponent({
         )?.data
 
         startDate.value = (new Date(pkg.value.startDate.replaceAll("-", "/")).toLocaleDateString('fa-IR')).substring(5);
+        startDate.value = getMonthName(startDate.value)
 
         endDate.value = (new Date(pkg.value.endDate.replaceAll("-", "/")).toLocaleDateString('fa-IR')).substring(5);
+        endDate.value = getMonthName(endDate.value)
 
-        debugger
         for (var i = 0; i < pkg.value.hotelPlan.length; i++) {
           htlFrom.value = pkg.value.hotelPlan[i].dateFrom;
           htlTo.value = pkg.value.hotelPlan[i].dateTo;
 
           htlDue[i] = dateDiff(htlFrom.value, htlTo.value);
           console.log(i.toString() + dateDiff(htlFrom.value, htlTo.value).toString());
-          // debugger
         }
 
       } catch (err: any) {
         console.log('result: ' + err.status.value)
-        // if(err.status.value == 200)
       }
     }
 
@@ -164,4 +157,4 @@ export default defineComponent({
     }
   },
 })
-</script>  
+</script>

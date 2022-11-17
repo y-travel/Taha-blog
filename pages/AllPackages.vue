@@ -53,9 +53,10 @@
               <!-- </span> -->
 
               <span class="large">
+                <img src="/assets/svg/hotel.svg" width="15"/>
                 {{ pkg.hotelPlan[0].hotel.address }}/ {{ pkg.hotelPlan[0].hotel.name }}
                 ({{ dateDiff1(pkg.hotelPlan[0].dateFrom, pkg.hotelPlan[0].dateTo) }} {{ $t('night') }})
-                <br/>
+                <br/><img src="/assets/svg/hotel.svg" width="15"/>
                 {{ pkg.hotelPlan[0].hotel.address }}/ {{ pkg.hotelPlan[1].hotel.name }}
                 ({{ dateDiff1(pkg.hotelPlan[1].dateFrom, pkg.hotelPlan[1].dateTo) }} {{ $t('night') }})
               </span>
