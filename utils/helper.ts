@@ -15,6 +15,55 @@ function toEnglishNumber(strNum: string) {
     return cache;
 }
 
+function getMonthName(strDate: string) {
+    let strDay = strDate.substring(strDate.indexOf("/") + 1, strDate.length);
+
+    let strMonth = strDate.substring(0, strDate.indexOf("/"));
+
+    switch (strMonth) {
+        case "۱":
+            strMonth = "فروردین"
+            break;
+        case "۲":
+            strMonth = "اردیبهشت"
+            break;
+        case "۳":
+            strMonth = "خرداد"
+            break;
+        case "۴":
+            strMonth = "تیر"
+            break;
+        case "۵":
+            strMonth = "مرداد"
+            break;
+        case "۶":
+            strMonth = "شهریور"
+            break;
+        case "۷":
+            strMonth = "مهر"
+            break;
+        case "۸":
+            strMonth = "آبان"
+            break;
+        case "۹":
+            strMonth = "آذر"
+            break;
+        case "۱۰":
+            strMonth = "دی"
+            break;
+        case "۱۱":
+            strMonth = "بهمن"
+            break;
+        case "۱۲":
+            strMonth = "اسفند"
+            break;
+        default:
+        // code block
+    }
+
+    return strDay + " " + strMonth;
+}
+
 function dateDiff(from: string, to: string) {
 
     let result = 0;
@@ -57,5 +106,6 @@ function dateDiff(from: string, to: string) {
 export {
     getRequest,
     dateDiff,
+    getMonthName,
 
 }
