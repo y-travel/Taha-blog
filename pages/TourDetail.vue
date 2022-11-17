@@ -8,34 +8,33 @@
         <div class="container">
 
             <div class="row">
-                <div class="col-sm-1">
-                    <br /><br />
-                    <img src="/assets/images/home/karbala-logo.png" class="img-responsive" height="50px" />
 
-                </div>
-                <div class="col-sm-11">
+                <div class="col-sm-12">
                     <h2 class="title text-center">
                         {{ tour.title }}
                     </h2>
-                    <!-- <img width="300px" height="300px" :src="`http://localhost:1337${tour.image[0].url}`" /> -->
-                    <!-- :to="`/tour?id=${tour.id}`" -->
+                    <p> {{ tour.slug }} </p>
 
-                    <p>
-                        {{ tour.slug }}
-                    </p>
+
                     <br />
+
                 </div>
+
             </div>
 
             <div class="row">
                 <div class="col-sm-12">
                     <hr />
                     <p class="desc">
-                        <b>توضیحات تور</b><br /><br />
+                        <b>توضیحات</b><br /><br />
                         {{ tour.content }}
-
                     </p>
                 </div>
+            </div>
+
+
+            <div class="row">
+                    <img v-for="(img, index) in imgs" :key="img.index" :src="`${img}`" class="img-responsive" style="padding-left:10px ;" width="250"/>
             </div>
 
         </div>
@@ -46,30 +45,39 @@
 </template>
     
 <script lang="ts">
-import process, { env } from 'process';
 import { defineComponent, onMounted, ref } from 'vue'
 import { getRequest } from '~/utils'
 
 export default defineComponent({
-    name: 'Tour',
+    name: 'TourDetail',
 
-    setup(context) {
+    setup() {
         const tour = ref({} as any);
         const loading2 = ref();
-
+        const env = require('~/.env.json')
+        var imgs = [3];
 
         const init = async () => {
             loading2.value = true;
             var tourID = (globalThis as any).$nuxt._route.query.id;
 
             try {
-                tour.value = (await getRequest('/api/tour-pages/' + tourID + '?populate=*'))?.data
-                let url = tour.value.image[0].url;
-                debugger
+
+                tour.value = (
+                    await getRequest(
+                        '/api/tour-pages/' + tourID + '?populate=*'
+                    )
+                )?.data
+
+                for (var i = 0; i < tour.value.image.length; i++) {
+                    imgs[i] = env.baseUrl + tour.value.image[i].url;
+                }
+
+                // imgs[0] = env.baseUrl + tour.value.image[0].url;
+                debugger;
 
             } catch (err: any) {
                 console.log('result: ' + err.status.value)
-                // if(err.status.value == 200)
             }
         }
 
@@ -79,10 +87,10 @@ export default defineComponent({
             loading2.value = false
         })
 
-
         return {
             tour,
             loading2,
+            imgs,
 
             availableLocales() {
                 return ['fa'] //@TODO implement
