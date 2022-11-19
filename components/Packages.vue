@@ -29,7 +29,7 @@
                 <img src="/assets/svg/bars.svg" width="10" /> {{ $t('detail') }}
               </nuxt-link>
               &nbsp;&nbsp;
-              <a :href="`/app/reservations?packageId=${pkg.id}`" class="btn btn-default add-to-cart">
+              <a :href="`/app/#/reservations?packageId=${pkg.id}`" :disabled="pkg.isComplete" class="btn btn-default add-to-cart">
                 <img src="/assets/svg/dollar.svg" width="7" /> {{ $t('reserve') }}
               </a>
             </div>

@@ -28,7 +28,7 @@
                   <img src="/assets/svg/bars.svg" width="10" />{{ $t('detail') }}&nbsp;&nbsp;&nbsp;
                 </nuxt-link>
 
-                <nuxt-link class="btn btn-default" :to="`/AllPackages`">
+                <nuxt-link class="btn btn-default" :to="`/app/#/reservations?packageId=${pkg.id}`" :disabled="pkg.isComplete">
                   <img src="/assets/svg/dollar.svg" width="7" /> {{ $t('reserve') }}&nbsp;&nbsp;&nbsp;
                 </nuxt-link>
               </div>
@@ -99,7 +99,7 @@ export default defineComponent({
       try {
         pkgs.value = (
           await getRequest(
-            '/api/packages/?populate=departure,return,hotelPlan.hotel'
+            '/api/packages/?populate=departure,return,hotelPlan.hotel&filters[isActive]=true'
           )
         )?.data
 
