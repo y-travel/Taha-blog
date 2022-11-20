@@ -1,102 +1,88 @@
 <template>
-    <div :class="{ 'ltrdir headerltr': $i18n.locale === 'en', 'rtldir': 'true' }">
+  <div :class="{ 'ltrdir headerltr': $i18n.locale === 'en', rtldir: 'true' }">
+    <b-overlay :show="loading2" no-wrap></b-overlay>
 
-        <b-overlay :show="loading2" no-wrap></b-overlay>
+    <HeaderMenu></HeaderMenu>
 
-        <HeaderMenu></HeaderMenu>
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12">
+          <h2 class="title text-center">
+            {{ tour.title }}
+          </h2>
+          <p>{{ tour.slug }}</p>
 
-        <div class="container">
-
-            <div class="row">
-
-                <div class="col-sm-12">
-                    <h2 class="title text-center">
-                        {{ tour.title }}
-                    </h2>
-                    <p> {{ tour.slug }} </p>
-
-
-                    <br />
-
-                </div>
-
-            </div>
-
-            <div class="row">
-                <div class="col-sm-12">
-                    <hr />
-                    <p class="desc">
-                        <b>توضیحات</b><br /><br />
-                        {{ tour.content }}
-                    </p>
-                </div>
-            </div>
-
-
-            <div class="row">
-                    <img v-for="(img, index) in imgs" :key="img.index" :src="`${img}`" class="img-responsive" style="padding-left:10px ;" width="250"/>
-            </div>
-
+          <br />
         </div>
+      </div>
 
-        <Footer></Footer>
+      <div class="row">
+        <div class="col-sm-12">
+          <hr />
+          <p class="desc">
+            <b>توضیحات</b><br /><br />
+            {{ tour.content }}
+          </p>
+        </div>
+      </div>
 
+      <div class="row">
+        <img
+          v-for="(img, index) in imgs"
+          :key="img.index"
+          :src="`${img}`"
+          class="img-responsive"
+          style="padding-left: 10px"
+          width="250"
+        />
+      </div>
     </div>
+
+    <Footer></Footer>
+  </div>
 </template>
-    
+
 <script lang="ts">
-import { defineComponent, onMounted, ref } from 'vue'
-import { getRequest } from '~/utils'
+import { defineComponent, onMounted, ref } from 'vue';
+import { getRequest } from '~/utils';
 
 export default defineComponent({
-    name: 'TourDetail',
+  name: 'TourDetail',
 
-    setup() {
-        const tour = ref({} as any);
-        const loading2 = ref();
-        const env = require('~/.env.json')
-        var imgs = [3];
+  setup() {
+    const tour = ref({} as any);
+    const loading2 = ref();
+    var imgs = [3];
 
-        const init = async () => {
-            loading2.value = true;
-            var tourID = (globalThis as any).$nuxt._route.query.id;
+    const init = async () => {
+      loading2.value = true;
+      var tourID = (globalThis as any).$nuxt._route.query.id;
 
-            try {
+      tour.value = (
+        await getRequest('/api/tour-pages/' + tourID + '?populate=*')
+      )?.data;
 
-                tour.value = (
-                    await getRequest(
-                        '/api/tour-pages/' + tourID + '?populate=*'
-                    )
-                )?.data
+      for (var i = 0; i < tour.value.image.length; i++) {
+        imgs[i] = tour.value.image[i].url;
+      }
+    };
 
-                for (var i = 0; i < tour.value.image.length; i++) {
-                    imgs[i] = env.baseUrl + tour.value.image[i].url;
-                }
+    onMounted(async () => {
+      await init();
 
-                // imgs[0] = env.baseUrl + tour.value.image[0].url;
-                debugger;
+      loading2.value = false;
+    });
 
-            } catch (err: any) {
-                console.log('result: ' + err.status.value)
-            }
-        }
+    return {
+      tour,
+      loading2,
+      imgs,
 
-        onMounted(async () => {
-            await init()
-
-            loading2.value = false
-        })
-
-        return {
-            tour,
-            loading2,
-            imgs,
-
-            availableLocales() {
-                return ['fa'] //@TODO implement
-                // return globalThis.nuxt.$i18n.locales.filter(i => i.code !== this.$i18n.locale)
-            },
-        }
-    },
-})
+      availableLocales() {
+        return ['fa']; //@TODO implement
+        // return globalThis.nuxt.$i18n.locales.filter(i => i.code !== this.$i18n.locale)
+      },
+    };
+  },
+});
 </script>
