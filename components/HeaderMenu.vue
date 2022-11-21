@@ -65,14 +65,6 @@ export default defineComponent({
 		const tours = ref()
 
 		const init = async () => {
-			try {
-
-				// debugger;
-
-			} catch (err: any) {
-				console.log('result: ' + err.status.value)
-				// if(err.status.value == 200)
-			}
 		};
 		onMounted(async () => {
 			await init();
