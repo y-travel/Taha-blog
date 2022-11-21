@@ -1,9 +1,8 @@
-const environments = require('./.env.json');
-const far = require('./locales/fa');
-console.log(environments.baseURL)
-export default {
 
-	env: environments,
+const far = require('./locales/fa');
+console.log(process.env.baseURL);
+
+export default {
 
 	// Target: https://go.nuxtjs.dev/config-target
 	target: 'static',
@@ -64,11 +63,11 @@ export default {
 	http: {
 		// proxyHeaders: false
 		proxy: true,
-		baseURL: environments.baseURL,
+		baseURL: process.env.baseURL,
 	},
 	proxy: {
-		'/api': environments.apiURL,
-		'/uploads': environments.uploadURL
+		'/api/': process.env.apiURL,
+		'/uploads': process.env.uploadURL
 	},
 
 	// Axios module configuration: https://go.nuxtjs.dev/config-axios

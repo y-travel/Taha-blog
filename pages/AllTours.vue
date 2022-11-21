@@ -83,7 +83,6 @@ export default defineComponent({
   setup() {
     const tours = ref({} as any);
     const loading = ref();
-    const env = require('~/.env.json');
 
     const init = async () => {
       loading.value = 'true';
@@ -97,7 +96,6 @@ export default defineComponent({
     return {
       tours,
       loading,
-      env,
     };
   },
   components: { Footer, HeaderMenu },
