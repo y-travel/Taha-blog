@@ -106,4 +106,6 @@ function dateDiff(from: string, to: string) {
   return result;
 }
 
-export { getRequest, dateDiff, getMonthName };
+const nowIsoDate =()=> new Date().toISOString().split('T')[0];
+
+export { getRequest, dateDiff, getMonthName,nowIsoDate };

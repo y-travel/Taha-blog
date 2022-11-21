@@ -114,7 +114,7 @@
 </template>
 
 <script lang="ts">
-import { getRequest, dateDiff } from '~/utils';
+import { getRequest, dateDiff, nowIsoDate } from '~/utils';
 import { defineComponent, onMounted, onUpdated, ref } from 'vue';
 import Footer from '~/components/Footer.vue';
 import HeaderMenu from '~/components/HeaderMenu.vue';
@@ -130,7 +130,7 @@ export default defineComponent({
       loading.value = true;
       pkgs.value = (
         await getRequest(
-          '/api/packages/?populate=departure,return,hotelPlan.hotel&filters[isActive]=true'
+          `/api/packages?populate=departure,return,hotelPlan.hotel&filters[isActive]=true&filters[startDate][$gt]=${nowIsoDate()}`
         )
       )?.data;
     };

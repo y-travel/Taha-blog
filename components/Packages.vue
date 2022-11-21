@@ -116,7 +116,7 @@
 
 <script lang="ts">
 import { defineComponent, onMounted, ref } from 'vue';
-import { getRequest } from '~/utils';
+import { getRequest, nowIsoDate } from '~/utils';
 
 export default defineComponent({
   name: 'Packages',
@@ -138,7 +138,7 @@ export default defineComponent({
         PageNo = 1;
       }
       const tmpRef = await getRequest(
-        `/api/packages?pagination[page]=${PageNo}&pagination[pageSize]=4&populate=departure,return&filters[isActive]=true`
+        `/api/packages?pagination[page]=${PageNo}&pagination[pageSize]=4&populate=departure,return&filters[isActive]=true&filters[startDate][$gt]=${nowIsoDate()}`
       );
 
       pkgs.value = tmpRef.data;
