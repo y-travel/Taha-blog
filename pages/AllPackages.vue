@@ -44,7 +44,7 @@
 
                 <nuxt-link
                   class="btn btn-default"
-                  :to="`/app/#/reservations?packageId=${pkg.id}`"
+                  :href="`/app/#/reservations?packageId=${pkg.id}`"
                   :disabled="pkg.isComplete"
                 >
                   <img src="/assets/svg/dollar.svg" width="7" />
