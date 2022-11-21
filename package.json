@@ -5,8 +5,9 @@
   "scripts": {
     "dev": "nuxt",
     "build": "nuxt build",
+    "build-prod": "set API_URL=&&nuxt build",
     "start": "nuxt start",
-    "generate": "nuxt generate",
+    "generate": "set API_URL=&&set NODE_ENV=production&&nuxt generate",
     "lint:js": "eslint --ext \".js,.ts,.vue\" --ignore-path .gitignore .",
     "lint:prettier": "prettier --check .",
     "lint": "yarn lint:js && yarn lint:prettier",

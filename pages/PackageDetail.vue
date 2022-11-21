@@ -1,7 +1,7 @@
 <template>
   <div :class="{ 'ltrdir headerltr': $i18n.locale === 'en', 'rtldir': 'true' }">
 
-    <b-overlay :show="loading2" no-wrap></b-overlay>
+    <b-overlay :show="loading" no-wrap></b-overlay>
 
     <HeaderMenu></HeaderMenu>
 
@@ -93,7 +93,7 @@ export default defineComponent({
 
   setup(context) {
     const pkg = ref({} as any);
-    const loading2 = ref();
+    const loading = ref();
     var htlDue = [0, 0];
     const htlFrom = ref();
     const htlTo = ref();
@@ -102,12 +102,10 @@ export default defineComponent({
     const endDate = ref();
 
     const init = async () => {
-      loading2.value = true;
+      loading.value = true;
       var pkgID = (globalThis as any).$nuxt._route.query.id;
 
       // let today = new Date("2022/01/01").toLocaleDateString('fa-IR');
-
-      try {
 
         pkg.value = (
           await getRequest(
@@ -129,20 +127,17 @@ export default defineComponent({
           console.log(i.toString() + dateDiff(htlFrom.value, htlTo.value).toString());
         }
 
-      } catch (err: any) {
-        console.log('result: ' + err.status.value)
-      }
     }
 
     onMounted(async () => {
       await init()
 
-      loading2.value = false
+      loading.value = false
     })
 
     return {
       pkg,
-      loading2,
+      loading,
       htlDue,
       startDate,
       endDate,
