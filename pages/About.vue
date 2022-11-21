@@ -169,14 +169,6 @@
             </p>
           </div>
         </div>
-
-        <div class="row">
-          <div class="col-sm-12 about-address">
-            <address>
-              <p><b style="font-size: 25px"> فونت یکان</b></p>
-            </address>
-          </div>
-        </div>
       </div>
     </div>
 
