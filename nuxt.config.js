@@ -84,7 +84,7 @@ export default {
 
 		fallbackLocale: 'fa',
 		defaultLocale: 'fa',
-
+		detectBrowserLanguage: false,
 		locales: [
 			{
 				code: 'fa',
