@@ -143,7 +143,7 @@ export default defineComponent({
 
       pkgs.value = tmpRef.data;
       pkgCount.value = tmpRef.meta.pagination.total;
-      pkgPages.value = tmpRef.meta.pagination.pageSize;
+      pkgPages.value = Math.ceil(tmpRef.meta.pagination.total/tmpRef.meta.pagination.pageSize);
 
       pagesInfo.value = pageNo.value + '/' + (pkgPages.value as string);
 

@@ -42,14 +42,14 @@
                   }}&nbsp;&nbsp;&nbsp;
                 </nuxt-link>
 
-                <nuxt-link
-                  class="btn btn-default"
+                <a
                   :href="`/app/#/reservations?packageId=${pkg.id}`"
                   :disabled="pkg.isComplete"
+                  class="btn btn-default add-to-cart"
                 >
                   <img src="/assets/svg/dollar.svg" width="7" />
                   {{ $t('reserve') }}&nbsp;&nbsp;&nbsp;
-                </nuxt-link>
+                </a>
               </div>
             </div>
 
