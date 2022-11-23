@@ -16,7 +16,7 @@
         <div class="col-sm-11">
           <h2 class="title text-center">
             {{ pkg.name }}
-            <a href="#">
+            <a :href="`/app/#/reservations?packageId=${pkg.id}`">
               <b-button variant="success" class="large" style="border-radius:10px;">
                 &nbsp;&nbsp;&nbsp;{{ $t('reserve') }}&nbsp;&nbsp;&nbsp;
               </b-button>
@@ -28,7 +28,7 @@
             </div>
             <div class="col-sm-3 desc" style="border:2px !important">
               <span class="price" title="قیمت پایه">
-                {{ pkg.basePrice?.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') }} <br />
+                {{ pkg.totalPackagePrice?.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') }} <br />
               </span>
 
               <span title="رفت">

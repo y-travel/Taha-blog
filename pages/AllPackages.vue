@@ -25,7 +25,7 @@
             <div class="col-sm-3">
               <span class="price" title="قیمت پایه">
                 {{
-                  pkg.basePrice
+                  pkg.totalPackagePrice
                     ?.toString()
                     .replace(/\B(?=(\d{3})+(?!\d))/g, ',')
                 }}
@@ -130,7 +130,7 @@ export default defineComponent({
       loading.value = true;
       pkgs.value = (
         await getRequest(
-          `/api/packages?populate=departure,return,hotelPlan.hotel&filters[isActive]=true&filters[startDate][$gt]=${nowIsoDate()}`
+          `/api/packages?sort=startDate:ASC&populate=departure,return,hotelPlan.hotel&filters[isActive]=true&filters[startDate][$gt]=${nowIsoDate()}`
         )
       )?.data;
     };
