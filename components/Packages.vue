@@ -13,7 +13,7 @@
               <h2>{{ pkg.name }}</h2>
               <p>
                 &nbsp;&nbsp;&nbsp;{{
-                  pkg.basePrice
+                  pkg.totalPackagePrice
                     .toString()
                     .replace(/\B(?=(\d{3})+(?!\d))/g, ',')
                 }}ریال &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -138,7 +138,7 @@ export default defineComponent({
         PageNo = 1;
       }
       const tmpRef = await getRequest(
-        `/api/packages?pagination[page]=${PageNo}&pagination[pageSize]=4&populate=departure,return&filters[isActive]=true&filters[startDate][$gt]=${nowIsoDate()}`
+        `/api/packages?pagination[page]=${PageNo}&pagination[pageSize]=4&sort=startDate:ASC&populate=departure,return&filters[isActive]=true&filters[startDate][$gt]=${nowIsoDate()}`
       );
 
       pkgs.value = tmpRef.data;
